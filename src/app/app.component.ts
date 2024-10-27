@@ -116,7 +116,7 @@ export class AppComponent {
               const bytes = Buffer.concat([
                 nativeToScVal(coreData.state.current + 1n, { type: 'u64' }).toXDR(),
                 nativeToScVal(this.form.value.message, { type: 'string' }).toXDR(),
-                nativeToScVal(coreData.block.prev_hash, { type: 'bytes' }).toXDR(),
+                nativeToScVal(coreData.block.hash, { type: 'bytes' }).toXDR(),
                 nativeToScVal(nonce, { type: 'u64' }).toXDR(),
                 nativeToScVal(this.form.value.source, { type: 'address' }).toXDR(),
               ]);
@@ -135,7 +135,7 @@ export class AppComponent {
 
         const xdr = await this.appService.generateXDR({
           miner: this.form.value.source!,
-          hash: Buffer.from('hash', 'hex'),
+          hash: Buffer.from(hash, 'hex'),
           message: this.form.value.message!,
           nonce,
         });
