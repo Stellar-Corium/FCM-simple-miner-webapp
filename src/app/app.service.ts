@@ -52,7 +52,7 @@ export class AppService {
         this.contract.call(
           'mine',
           xdr.ScVal.scvBytes(params.hash),
-          xdr.ScVal.scvSymbol(params.message),
+          xdr.ScVal.scvString(params.message),
           nativeToScVal(params.nonce, { type: 'u64' }),
           account.toScVal()
         )
